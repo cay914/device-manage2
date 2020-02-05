@@ -1,4 +1,4 @@
-package com.hcmony;
+package com.codebattery;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
