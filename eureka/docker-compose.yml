@@ -12,7 +12,7 @@ services:
     ports:
       - "30761:30761"
     extra_hosts:
-#      - "host:localhost"
+      - "host:192.168.3.31"
     healthcheck:
       test: curl --fail -s http://localhost:30761/health || exit 1
       interval: 30s
