@@ -64,12 +64,12 @@ public class ResponseFilter extends ZuulFilter{
 			ObjectMapper mapper = new ObjectMapper();
 			bodyStr = StreamUtils.copyToString(stream, Charset.forName("UTF-8"));
             /*
-             *   使用#占位符，body的json字符串直接替换#
+             *   使用#占位符，body的json字符串直接替换"#"
              *
              */
 			Response response = new Response("200", "", "#");
             String responseStr = mapper.writeValueAsString(response);
-			ctx.setResponseBody(responseStr.replaceAll("#", bodyStr));
+			ctx.setResponseBody(responseStr.replaceAll("\"#\"", bodyStr));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
