@@ -15,7 +15,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Api("账户接口")
 @RestController
@@ -35,6 +38,41 @@ public class AccountController {
 
 
         return null;
+    }
+
+
+    @RequestMapping(value="/test-string",method = RequestMethod.POST)
+    @ResponseBody
+    public String testString() {
+
+
+        return "123";
+    }
+
+    @RequestMapping(value="/test-Integer",method = RequestMethod.POST)
+    @ResponseBody
+    public Integer testInteger() {
+
+
+        return 1;
+    }
+
+    @RequestMapping(value="/test-emptylist",method = RequestMethod.POST)
+    @ResponseBody
+    public List testEmptylist() {
+
+        List<String> list = new ArrayList<>();
+
+        return list;
+    }
+
+    @RequestMapping(value="/test-emptyobject",method = RequestMethod.POST)
+    @ResponseBody
+    public Map testEmptyObject() {
+
+        Map m = new HashMap();
+
+        return m;
     }
 
 }
