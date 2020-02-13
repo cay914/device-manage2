@@ -36,43 +36,9 @@ public class AccountController {
     public List<AccountInfo> listAll() {
         logger.debug("获取所有账户信息");
 
+        List<AccountInfo> infos = accountService.listAll();
 
-        return null;
-    }
-
-
-    @RequestMapping(value="/test-string",method = RequestMethod.POST)
-    @ResponseBody
-    public String testString() {
-
-
-        return "123";
-    }
-
-    @RequestMapping(value="/test-Integer",method = RequestMethod.POST)
-    @ResponseBody
-    public Integer testInteger() {
-
-
-        return 1;
-    }
-
-    @RequestMapping(value="/test-emptylist",method = RequestMethod.POST)
-    @ResponseBody
-    public List testEmptylist() {
-
-        List<String> list = new ArrayList<>();
-
-        return list;
-    }
-
-    @RequestMapping(value="/test-emptyobject",method = RequestMethod.POST)
-    @ResponseBody
-    public Map testEmptyObject() {
-
-        Map m = new HashMap();
-
-        return m;
+        return infos;
     }
 
 }

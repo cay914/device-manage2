@@ -69,6 +69,24 @@ public class AccountService {
         for(Account account : allAcountList){
             AccountInfo info = new AccountInfo();
 
+            info.setAvatar(account.getAvatar());
+            info.setAuthorize(account.getAuthorize());
+            info.setCode(account.getCode());
+            info.setCreateTime(account.getCreateTime());
+            info.setDepartment(account.getDepartment());
+            info.setDepartmentCode(account.getDepartmentCode());
+            info.setDescription(account.getDescription());
+            info.setEmail(account.getEmail());
+            info.setIsOwner(account.getIsOwner());
+            info.setLastLoginTime(account.getLastLoginTime());
+            info.setMemberCode(account.getMemberCode());
+            info.setMobile(account.getMobile());
+            info.setName(account.getName());
+            info.setOrganizationCode(account.getOrganizationCode());
+            info.setPosition(account.getPosition());
+            info.setStatus(account.getStatus());
+
+            accountInfoList.add(info);
         }
 
 //        $list = $this->model->_list($where, 'id asc');
