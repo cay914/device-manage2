@@ -16,7 +16,30 @@ public class AccountInfo {
     private Byte status;
     private String description;
     private String position;
+
+    public AccountInfo() {
+    }
+
     private String department;
+
+    public AccountInfo(String avatar, String code, String memberCode, String organizationCode, String departmentCode, String authorize, Byte isOwner, String name, String mobile, String email, String createTime, String lastLoginTime, Byte status, String description, String position, String department) {
+        this.avatar = avatar;
+        this.code = code;
+        this.memberCode = memberCode;
+        this.organizationCode = organizationCode;
+        this.departmentCode = departmentCode;
+        this.authorize = authorize;
+        this.isOwner = isOwner;
+        this.name = name;
+        this.mobile = mobile;
+        this.email = email;
+        this.createTime = createTime;
+        this.lastLoginTime = lastLoginTime;
+        this.status = status;
+        this.description = description;
+        this.position = position;
+        this.department = department;
+    }
 
     public String getAvatar() {
         return avatar;

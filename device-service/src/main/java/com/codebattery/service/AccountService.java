@@ -64,30 +64,6 @@ public class AccountService {
 //            $where[] = ['last_login_time', 'between', ["{$start} 00:00:00", "{$end} 23:59:59"]];
 //        }
 
-        List<Account> allAcountList = Lists.newArrayList(accountRepository.findAll());
-        List<AccountInfo> accountInfoList = new ArrayList<>();
-        for(Account account : allAcountList){
-            AccountInfo info = new AccountInfo();
-
-            info.setAvatar(account.getAvatar());
-            info.setAuthorize(account.getAuthorize());
-            info.setCode(account.getCode());
-            info.setCreateTime(account.getCreateTime());
-            info.setDepartment(account.getDepartment());
-            info.setDepartmentCode(account.getDepartmentCode());
-            info.setDescription(account.getDescription());
-            info.setEmail(account.getEmail());
-            info.setIsOwner(account.getIsOwner());
-            info.setLastLoginTime(account.getLastLoginTime());
-            info.setMemberCode(account.getMemberCode());
-            info.setMobile(account.getMobile());
-            info.setName(account.getName());
-            info.setOrganizationCode(account.getOrganizationCode());
-            info.setPosition(account.getPosition());
-            info.setStatus(account.getStatus());
-
-            accountInfoList.add(info);
-        }
 
 //        $list = $this->model->_list($where, 'id asc');
 //        if ($list['list']) {
@@ -114,6 +90,8 @@ public class AccountService {
 //        }
 //        $list['authList'] = \app\common\Model\ProjectAuth::where(['status' => '1', 'organization_code' => $currentOrganizationCode])->select();
 
+
+        List<AccountInfo> accountInfoList = accountRepository.queryAllAccountInfo();
 
         return accountInfoList;
     }
