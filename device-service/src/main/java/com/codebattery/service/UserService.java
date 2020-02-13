@@ -1,18 +1,18 @@
 package com.codebattery.service;
 
+import com.codebattery.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.codebattery.model.Member;
-import com.codebattery.repository.MemberRepository;
+import com.codebattery.domain.User;
 
 @Service
 public class UserService {
     @Autowired
-    private MemberRepository memberRepository;
+    private UserRepository userRepository;
 
-    public Member login(Long id) {
-    	return memberRepository.findById(id).get();
+    public User login(Long id) {
+    	return userRepository.findById(id).get();
     }
     
 }

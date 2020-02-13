@@ -1,4 +1,4 @@
-package com.codebattery.model;
+package com.codebattery.domain;
 
 import javax.persistence.*;
 import java.util.Objects;

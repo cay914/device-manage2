@@ -1,4 +1,4 @@
-package com.codebattery.model;
+package com.codebattery.domain;
 
 import java.util.Date;
 
@@ -11,9 +11,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 @Entity
-@Table(name = "member")
+@Table(name = "user")
 @ApiModel(description = "成员")
-public class Member {
+public class User {
 	
 	@ApiModelProperty(value = "ID", required = true)
     @Id
