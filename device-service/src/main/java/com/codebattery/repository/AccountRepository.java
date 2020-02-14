@@ -1,7 +1,7 @@
 package com.codebattery.repository;
 
-import com.codebattery.domain.Account;
-import com.codebattery.model.AccountInfo;
+import com.codebattery.domain.entity.Account;
+import com.codebattery.domain.model.AccountInfo;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -12,10 +12,10 @@ import java.util.List;
 public interface AccountRepository extends CrudRepository<Account, Long>  {
 
 
-    @Query(value="SELECT new com.codebattery.model.AccountInfo("
+    @Query(value="SELECT new com.codebattery.domain.model.AccountInfo("
             + " avatar, code, memberCode, organizationCode, departmentCode, authorize, isOwner, name, mobile, email, createTime, lastLoginTime, status, description, position, department "
             + ") FROM "
-            + " com.codebattery.domain.Account a ")
+            + " com.codebattery.domain.entity.Account a ")
     List<AccountInfo> queryAllAccountInfo();
 
 }

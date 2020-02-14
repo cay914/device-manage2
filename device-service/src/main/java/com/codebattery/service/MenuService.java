@@ -1,6 +1,6 @@
 package com.codebattery.service;
 
-import com.codebattery.domain.Menu;
+import com.codebattery.domain.entity.Menu;
 import com.codebattery.repository.MenuRepository;
 import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;

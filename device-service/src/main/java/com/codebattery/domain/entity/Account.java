@@ -1,7 +1,11 @@
-package com.codebattery.model;
+package com.codebattery.domain.entity;
 
-public class AccountInfo {
-    private String avatar;
+import javax.persistence.*;
+import java.util.Objects;
+
+@Entity
+public class Account {
+    private int id;
     private String code;
     private String memberCode;
     private String organizationCode;
@@ -15,40 +19,22 @@ public class AccountInfo {
     private String lastLoginTime;
     private Byte status;
     private String description;
+    private String avatar;
     private String position;
-
-    public AccountInfo() {
-    }
-
     private String department;
 
-    public AccountInfo(String avatar, String code, String memberCode, String organizationCode, String departmentCode, String authorize, Byte isOwner, String name, String mobile, String email, String createTime, String lastLoginTime, Byte status, String description, String position, String department) {
-        this.avatar = avatar;
-        this.code = code;
-        this.memberCode = memberCode;
-        this.organizationCode = organizationCode;
-        this.departmentCode = departmentCode;
-        this.authorize = authorize;
-        this.isOwner = isOwner;
-        this.name = name;
-        this.mobile = mobile;
-        this.email = email;
-        this.createTime = createTime;
-        this.lastLoginTime = lastLoginTime;
-        this.status = status;
-        this.description = description;
-        this.position = position;
-        this.department = department;
+    @Id
+    @Column(name = "id")
+    public int getId() {
+        return id;
     }
 
-    public String getAvatar() {
-        return avatar;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
-    }
-
+    @Basic
+    @Column(name = "code")
     public String getCode() {
         return code;
     }
@@ -57,6 +43,8 @@ public class AccountInfo {
         this.code = code;
     }
 
+    @Basic
+    @Column(name = "member_code")
     public String getMemberCode() {
         return memberCode;
     }
@@ -65,6 +53,8 @@ public class AccountInfo {
         this.memberCode = memberCode;
     }
 
+    @Basic
+    @Column(name = "organization_code")
     public String getOrganizationCode() {
         return organizationCode;
     }
@@ -73,6 +63,8 @@ public class AccountInfo {
         this.organizationCode = organizationCode;
     }
 
+    @Basic
+    @Column(name = "department_code")
     public String getDepartmentCode() {
         return departmentCode;
     }
@@ -81,6 +73,8 @@ public class AccountInfo {
         this.departmentCode = departmentCode;
     }
 
+    @Basic
+    @Column(name = "authorize")
     public String getAuthorize() {
         return authorize;
     }
@@ -89,6 +83,8 @@ public class AccountInfo {
         this.authorize = authorize;
     }
 
+    @Basic
+    @Column(name = "is_owner")
     public Byte getIsOwner() {
         return isOwner;
     }
@@ -97,6 +93,8 @@ public class AccountInfo {
         this.isOwner = isOwner;
     }
 
+    @Basic
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -105,6 +103,8 @@ public class AccountInfo {
         this.name = name;
     }
 
+    @Basic
+    @Column(name = "mobile")
     public String getMobile() {
         return mobile;
     }
@@ -113,6 +113,8 @@ public class AccountInfo {
         this.mobile = mobile;
     }
 
+    @Basic
+    @Column(name = "email")
     public String getEmail() {
         return email;
     }
@@ -121,6 +123,8 @@ public class AccountInfo {
         this.email = email;
     }
 
+    @Basic
+    @Column(name = "create_time")
     public String getCreateTime() {
         return createTime;
     }
@@ -129,6 +133,8 @@ public class AccountInfo {
         this.createTime = createTime;
     }
 
+    @Basic
+    @Column(name = "last_login_time")
     public String getLastLoginTime() {
         return lastLoginTime;
     }
@@ -137,6 +143,8 @@ public class AccountInfo {
         this.lastLoginTime = lastLoginTime;
     }
 
+    @Basic
+    @Column(name = "status")
     public Byte getStatus() {
         return status;
     }
@@ -145,6 +153,8 @@ public class AccountInfo {
         this.status = status;
     }
 
+    @Basic
+    @Column(name = "description")
     public String getDescription() {
         return description;
     }
@@ -153,6 +163,18 @@ public class AccountInfo {
         this.description = description;
     }
 
+    @Basic
+    @Column(name = "avatar")
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    @Basic
+    @Column(name = "position")
     public String getPosition() {
         return position;
     }
@@ -161,11 +183,42 @@ public class AccountInfo {
         this.position = position;
     }
 
+    @Basic
+    @Column(name = "department")
     public String getDepartment() {
         return department;
     }
 
     public void setDepartment(String department) {
         this.department = department;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Account account = (Account) o;
+        return id == account.id &&
+                Objects.equals(code, account.code) &&
+                Objects.equals(memberCode, account.memberCode) &&
+                Objects.equals(organizationCode, account.organizationCode) &&
+                Objects.equals(departmentCode, account.departmentCode) &&
+                Objects.equals(authorize, account.authorize) &&
+                Objects.equals(isOwner, account.isOwner) &&
+                Objects.equals(name, account.name) &&
+                Objects.equals(mobile, account.mobile) &&
+                Objects.equals(email, account.email) &&
+                Objects.equals(createTime, account.createTime) &&
+                Objects.equals(lastLoginTime, account.lastLoginTime) &&
+                Objects.equals(status, account.status) &&
+                Objects.equals(description, account.description) &&
+                Objects.equals(avatar, account.avatar) &&
+                Objects.equals(position, account.position) &&
+                Objects.equals(department, account.department);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, code, memberCode, organizationCode, departmentCode, authorize, isOwner, name, mobile, email, createTime, lastLoginTime, status, description, avatar, position, department);
     }
 }

@@ -1,4 +1,4 @@
-package com.codebattery.domain;
+package com.codebattery.domain.entity;
 
 import java.util.Date;
 

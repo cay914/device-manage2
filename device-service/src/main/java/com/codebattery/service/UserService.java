@@ -4,7 +4,7 @@ import com.codebattery.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.codebattery.domain.User;
+import com.codebattery.domain.entity.User;
 
 @Service
 public class UserService {

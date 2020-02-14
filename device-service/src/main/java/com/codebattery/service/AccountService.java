@@ -1,13 +1,10 @@
 package com.codebattery.service;
 
-import com.codebattery.domain.Account;
-import com.codebattery.model.AccountInfo;
+import com.codebattery.domain.model.AccountInfo;
 import com.codebattery.repository.AccountRepository;
-import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service

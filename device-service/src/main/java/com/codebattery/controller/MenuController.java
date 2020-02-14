@@ -1,7 +1,7 @@
 package com.codebattery.controller;
 
 
-import com.codebattery.domain.Menu;
+import com.codebattery.domain.entity.Menu;
 import com.codebattery.service.MenuService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
