@@ -2,6 +2,7 @@ package com.codebattery.controller;
 
 
 import com.codebattery.domain.entity.User;
+import com.codebattery.domain.model.LoginInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,13 +32,12 @@ public class LoginController {
     @RequestMapping(value="",method = RequestMethod.POST)
     @ResponseBody
 //    public Member login(@RequestBody LoginInfo info) {
-    public User login() {
+    public LoginInfo login() {
         logger.debug("登录");
 
-        User m = userService.login(582L);
+        LoginInfo info = userService.login(582L);
         
-        
-		return m;
+		return info;
     }
 
 //    @RequestMapping(value="/{deviceId}",method = RequestMethod.PUT)
