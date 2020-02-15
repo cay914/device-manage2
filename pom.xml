@@ -95,4 +95,12 @@
         <sword.version>0.0.1-SNAPSHOT</sword.version>
     </properties>
 
+    <profiles>
+        <profile>
+            <id>ci</id>
+            <modules>
+            </modules>
+        </profile>
+    </profiles>
+
 </project>
