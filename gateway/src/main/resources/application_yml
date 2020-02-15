@@ -1,0 +1,6 @@
+server:portport=5555
+eureka.instance.ip-address=true
+eureka.client.service-url.defaultZone= http://192.168.3.31:30761/eureka/
+spring.application.name=gateway
+
+
