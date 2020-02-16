@@ -23,6 +23,7 @@
         <module>security</module>
         <module>sleuth</module>
         <module>zuul</module>
+        <module>gateway</module>
     </modules>
 
     <repositories>
@@ -31,7 +32,13 @@
             <name>local-nexus</name>
             <url>http://192.168.3.26:8001/repository/local-nexus/</url>
         </repository>
+        <repository>
+            <id>central</id>
+            <name>central</name>
+            <url>http://maven.aliyun.com/nexus/content/repositories/central/</url>
+        </repository>
     </repositories>
+
 
     <distributionManagement>
 <!--        <repository>-->
@@ -61,10 +68,6 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
         <dependency>
@@ -82,6 +85,18 @@
             <version>2.4</version>
             <classifier>jdk15</classifier>
         </dependency>
+
+        <!-- swagger2依赖 -->
+        <!--<dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.9.2</version>
+        </dependency>-->
     </dependencies>
 
     <properties>

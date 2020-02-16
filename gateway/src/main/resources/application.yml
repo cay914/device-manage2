@@ -9,9 +9,11 @@ spring:
       routes:
         - id: device-service
           uri: lb://device-service
+#          uri: http://192.168.3.31:9003
           predicates:
-            - Path=/device/**
-
+            - Path=/api/device/**
+          filters:
+            - RewritePath=/api/device/(?<segment>.*), /$\{segment}
 
 eureka:
   instance:
