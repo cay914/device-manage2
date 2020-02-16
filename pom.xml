@@ -22,7 +22,6 @@
         <module>device-service</module>
         <module>security</module>
         <module>sleuth</module>
-        <module>zuul</module>
         <module>gateway</module>
     </modules>
 
