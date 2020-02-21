@@ -12,7 +12,9 @@ import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.core.io.buffer.DataBufferUtils;
 import org.springframework.core.io.buffer.NettyDataBufferFactory;
 import org.springframework.http.server.reactive.ServerHttpResponse;
+import org.springframework.http.server.reactive.ServerHttpResponseDecorator;
 import org.springframework.stereotype.Component;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.netty.Connection;
 
@@ -65,19 +67,12 @@ public class ApiResponseFilter implements GatewayFilterFactory<ApiResponseFilter
     public GatewayFilter apply(Config config) {
 
 
-        return ((exchange, chain) -> {
+        return (exchange, chain) -> {
                 return chain.filter(exchange).then(Mono.defer(() -> {
-                    Connection connection = exchange.getAttribute(CLIENT_RESPONSE_CONN_ATTR);
-                    if (connection == null) {
-                        return Mono.empty();
-                    }
                     ServerHttpResponse response = exchange.getResponse();
                     NettyDataBufferFactory factory = (NettyDataBufferFactory) response.bufferFactory();
-                    Mono<DataBuffer> body =
-                    connection.inbound().receive()
-                            .retain()
-                            .map(factory::wrap)
-                            .map(dataBuffer -> {
+                    Flux<DataBuffer> body = Flux.just(factory.allocateBuffer());
+                    body.map(dataBuffer -> {
                                 byte[] content = new byte[dataBuffer.readableByteCount()];
                                 dataBuffer.read(content);
                                 DataBufferUtils.release(dataBuffer);
@@ -98,7 +93,7 @@ public class ApiResponseFilter implements GatewayFilterFactory<ApiResponseFilter
 
                     return response.writeWith(body);
                 }));
-        });
+        };
     }
 
     @Override
