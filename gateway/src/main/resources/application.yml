@@ -15,12 +15,16 @@ spring:
           filters:
             - RewritePath=/api/device/(?<segment>.*), /$\{segment}
             - ApiResponseFilter
+#            - ModifyResponseBody
         - id: device-service-doc
           uri: lb://device-service
           predicates:
             - Path=/doc/device-service/**
           filters:
             - RewritePath=/doc/device-service/(?<segment>.*), /$\{segment}
+  redis:
+    host: 192.168.3.31
+    port: 6379
 
 eureka:
   instance:
@@ -29,6 +33,7 @@ eureka:
     service-url:
       defaultZone:
         http://192.168.3.31:30761/eureka/
+
 
 
 
