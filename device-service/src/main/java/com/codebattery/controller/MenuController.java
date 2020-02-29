@@ -2,6 +2,7 @@ package com.codebattery.controller;
 
 
 import com.codebattery.domain.entity.Menu;
+import com.codebattery.domain.model.MenuInfo;
 import com.codebattery.service.MenuService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -28,10 +29,10 @@ public class MenuController {
     @ApiOperation(value="获取全部菜单列表",notes="获取菜单列表")
     @RequestMapping(value="all-menus",method = RequestMethod.POST)
     @ResponseBody
-    public List<Menu> listAll() {
+    public List<MenuInfo> listAll() {
         logger.debug("获取全部菜菜");
 
-        List<Menu> menus = menuService.queryAllMenus();
+        List<MenuInfo> menus = menuService.queryAllMenus();
 
         return menus;
     }
