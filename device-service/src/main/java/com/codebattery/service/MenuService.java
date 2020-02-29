@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 @Service
@@ -31,26 +32,29 @@ public class MenuService {
     }
 
     private List<MenuInfo> createMenuTree(List<MenuInfo> menuInfos){
-        List<MenuInfo> result = new ArrayList<MenuInfo>();
-        List<MenuInfo> record = new ArrayList<MenuInfo>();
+        LinkedList<MenuInfo> result = new LinkedList<MenuInfo>();  //结果
+        List<MenuInfo> record = new ArrayList<MenuInfo>();  //记录已经处理的菜单
 
         for(MenuInfo info : menuInfos){
             if(!record.contains(info)) {
-                if (info.getPid() != 0L) {
-                    MenuInfo pInfo = getMenuInfo(menuInfos, info.getPid());
-                    initMenu(result, menuInfos, record, pInfo);
-                    pInfo.getChildren().add(info);
-                } else {
-                    initMenu(result, menuInfos, record, info);
-                    result.add(info);
-                }
+                initMenu(result, menuInfos, record, info);
             }
         }
 
         return result;
     }
 
-    private void initMenu(List<MenuInfo> result, List<MenuInfo> source, List<MenuInfo> record, MenuInfo info){
+    private void initMenu(LinkedList<MenuInfo> result, List<MenuInfo> source, List<MenuInfo> record, MenuInfo info){
+
+        if (info.getPid() != 0L) {
+            MenuInfo pInfo = getMenuInfo(source, info.getPid());
+            initMenu(result, source, record, pInfo);
+
+            addSortMenu(pInfo.getChildren(), info);
+        } else {
+            addSortMenu(result, info);
+        }
+
         record.add(info);
     }
 
@@ -66,7 +70,25 @@ public class MenuService {
         return menuInfo;
     }
 
+    private void addSortMenu(LinkedList<MenuInfo> list, MenuInfo info){
+        int num = list.size();
+        if(list.isEmpty()) {
+            list.add(info);
+        } else {
+            for(int i=0; i<num; i++) {
+                MenuInfo m = list.get(i);
 
+                if(i==num -1) {
+                    list.add(info); //到最后
+                } else {
+                    if(m.getSort() > info.getSort()){
+                        list.add(i, info);
+                        break;
+                    }
+                }
+            }
+        }
+    }
 
 
     

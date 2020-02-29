@@ -1,6 +1,7 @@
 package com.codebattery.domain.model;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class MenuInfo {
@@ -22,7 +23,7 @@ public class MenuInfo {
     private String statusText;
     private String innerText;
     private String fullUrl;
-    List<MenuInfo> children = new ArrayList<>();
+    LinkedList<MenuInfo> children = new LinkedList<>();
 
     public MenuInfo() {
     }
@@ -47,32 +48,6 @@ public class MenuInfo {
         this.showSlider = showSlider;
     }
 
-    public MenuInfo(Long id, Long pid, String title, String icon, String url, String filePath,
-                    String params, String node, Integer sort, Byte status, long createBy,
-                    String createAt, Byte isInner, String values, Byte showSlider, String statusText, String innerText,
-                    String fullUrl, List<MenuInfo> children) {
-        this.id = id;
-        this.pid = pid;
-        this.title = title;
-        this.icon = icon;
-        this.url = url;
-        this.filePath = filePath;
-        this.params = params;
-        this.node = node;
-        this.sort = sort;
-        this.status = status;
-        this.createBy = createBy;
-        this.createAt = createAt;
-        this.isInner = isInner;
-        this.values = values;
-        this.showSlider = showSlider;
-        this.statusText = statusText;
-        this.innerText = innerText;
-        this.fullUrl = fullUrl;
-        if(children!=null) {
-            this.children = children;
-        }
-    }
 
     public Long getId() {
         return id;
@@ -218,11 +193,11 @@ public class MenuInfo {
         this.fullUrl = fullUrl;
     }
 
-    public List<MenuInfo> getChildren() {
+    public LinkedList<MenuInfo> getChildren() {
         return children;
     }
 
-    public void setChildren(List<MenuInfo> children) {
+    public void setChildren(LinkedList<MenuInfo> children) {
         this.children = children;
     }
 }
