@@ -20,7 +20,6 @@ public class MenuService {
      * 查询菜单
      *
      * @return
-     *
      * @author Eric
      * @date 2020-02-09
      */
@@ -31,37 +30,36 @@ public class MenuService {
         return createMenuTree(menuInfos);
     }
 
-    private List<MenuInfo> createMenuTree(List<MenuInfo> menuInfos){
+    private List<MenuInfo> createMenuTree(List<MenuInfo> menuInfos) {
         LinkedList<MenuInfo> result = new LinkedList<MenuInfo>();  //结果
         List<MenuInfo> record = new ArrayList<MenuInfo>();  //记录已经处理的菜单
 
-        for(MenuInfo info : menuInfos){
-            if(!record.contains(info)) {
-                initMenu(result, menuInfos, record, info);
-            }
+        for (MenuInfo info : menuInfos) {
+            initMenu(result, menuInfos, record, info);
         }
 
         return result;
     }
 
-    private void initMenu(LinkedList<MenuInfo> result, List<MenuInfo> source, List<MenuInfo> record, MenuInfo info){
+    private void initMenu(LinkedList<MenuInfo> result, List<MenuInfo> source, List<MenuInfo> record, MenuInfo info) {
+        if (!record.contains(info)) {
+            if (info.getPid() != 0L) {
+                MenuInfo pInfo = getMenuInfo(source, info.getPid());
+                initMenu(result, source, record, pInfo);
 
-        if (info.getPid() != 0L) {
-            MenuInfo pInfo = getMenuInfo(source, info.getPid());
-            initMenu(result, source, record, pInfo);
+                addSortMenu(pInfo.getChildren(), info);
+            } else {
+                addSortMenu(result, info);
+            }
 
-            addSortMenu(pInfo.getChildren(), info);
-        } else {
-            addSortMenu(result, info);
+            record.add(info);
         }
-
-        record.add(info);
     }
 
-    private MenuInfo getMenuInfo(List<MenuInfo> menuInfos, Long id){
+    private MenuInfo getMenuInfo(List<MenuInfo> menuInfos, Long id) {
         MenuInfo menuInfo = null;
-        for(MenuInfo info : menuInfos){
-            if(info.getId().equals(id)){
+        for (MenuInfo info : menuInfos) {
+            if (info.getId().equals(id)) {
                 menuInfo = info;
                 break;
             }
@@ -70,20 +68,19 @@ public class MenuService {
         return menuInfo;
     }
 
-    private void addSortMenu(LinkedList<MenuInfo> list, MenuInfo info){
+    private void addSortMenu(LinkedList<MenuInfo> list, MenuInfo info) {
         int num = list.size();
-        if(list.isEmpty()) {
+        if (list.isEmpty()) {
             list.add(info);
         } else {
-            for(int i=0; i<num; i++) {
+            for (int i = 0; i < num; i++) {
                 MenuInfo m = list.get(i);
-
-                if(i==num -1) {
-                    list.add(info); //到最后
+                if (m.getSort() > info.getSort()) {
+                    list.add(i, info);
+                    break;
                 } else {
-                    if(m.getSort() > info.getSort()){
-                        list.add(i, info);
-                        break;
+                    if (i == num - 1) {
+                        list.add(info); //到最后
                     }
                 }
             }
@@ -91,5 +88,4 @@ public class MenuService {
     }
 
 
-    
 }
