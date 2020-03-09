@@ -6,6 +6,13 @@ spring:
     name: gateway
   cloud:
     gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "http://device.codebattery.top"
+            allowedMethods:
+              - GET
+              - POST
       routes:
         - id: device-service
           uri: lb://device-service
@@ -31,7 +38,13 @@ eureka:
         http://192.168.3.31:30761/eureka/
 
 
-
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+    health:
+      show-details: always
 
 
 
