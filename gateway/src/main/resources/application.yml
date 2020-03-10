@@ -9,7 +9,7 @@ spring:
       globalcors:
         corsConfigurations:
           '[/**]':
-            allowedOrigins: "http://device.codebattery.top"
+            allowedOrigins: "device.codebattery.top"
             allowedMethods:
               - GET
                 POST
