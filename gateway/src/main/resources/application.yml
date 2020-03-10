@@ -12,7 +12,10 @@ spring:
             allowedOrigins: "http://device.codebattery.top"
             allowedMethods:
               - GET
-              - POST
+                POST
+                DELETE
+                PUT
+                OPTION
       routes:
         - id: device-service
           uri: lb://device-service
