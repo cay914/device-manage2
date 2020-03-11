@@ -5,6 +5,9 @@ spring:
   application:
     name: gateway
   cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.3.31:8848
     gateway:
       globalcors:
         corsConfigurations:
@@ -36,14 +39,6 @@ spring:
   redis:
     host: 192.168.3.31
     port: 6379
-
-eureka:
-  instance:
-    ip-address: true
-  client:
-    service-url:
-      defaultZone:
-        http://192.168.3.31:30761/eureka/
 
 
 management:
