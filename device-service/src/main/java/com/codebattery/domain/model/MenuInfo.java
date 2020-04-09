@@ -46,6 +46,7 @@ public class MenuInfo {
         this.isInner = isInner;
         this.values = values;
         this.showSlider = showSlider;
+        this.fullUrl = url;
     }
 
 
